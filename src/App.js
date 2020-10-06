@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import products from './products.json';
-import $ from 'jquery';
 import { process } from '@progress/kendo-data-query';
 import { Grid, GridColumn } from '@progress/kendo-react-grid';
 import { Tooltip } from '@progress/kendo-react-tooltip';
@@ -9,6 +8,7 @@ import '@progress/kendo-theme-default/dist/all.css';
 class App extends Component {
 
   MyCustomCell = (props) => <CustomCell {...props} />
+  SkypeCall = (props) => <SkypeCallComponent {...props} />
   constructor(props) {
     super(props);
 
@@ -45,12 +45,19 @@ class App extends Component {
               width="400px"
             />
             <GridColumn field="UnitPrice" width="400px" title="Price" format="{0:c}" />
+            <GridColumn
+              field="UnitPrice"
+              cell={this.SkypeCall}
+              title="Unit Price"
+              width="400px"
+            />
           </Grid>
         </Tooltip>
       </div>
     );
   }
 }
+
 class CustomCell extends React.Component {
   setBackgroudColor(columnValue, fieldName) {
     let colorValue = "purple";
@@ -72,6 +79,17 @@ class CustomCell extends React.Component {
     );
   }
 }
+class SkypeCallComponent extends React.Component {
+
+  render() {
+    const value = this.props.dataItem;
+    const username = `skype:${value.ProductName}?chat`;
+    console.log(username)
+    return (
+      <a href={username}>Call me on Skype</a>
+    );
+  }
+}
 class TooltipContentTemplate extends React.Component {
   render() {
     const id = this.props.title;
@@ -86,7 +104,10 @@ class TooltipContentTemplate extends React.Component {
             justifyContent: "flex-start", alignItems: "flex-start",
             wordBreak: "break-word"
           }}> A template for: <strong>{result.ProductName}</strong>
-        A template for: <strong>{result.QuantityPerUnit}</strong></div>
+        A template for: <strong>{result.QuantityPerUnit}</strong>
+
+            <a href="skype:yourSkypeUsername?call">Call me on Skype</a>
+          </div>
 
 
 

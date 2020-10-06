@@ -31,7 +31,7 @@
     },
     {
         "ProductID": 9,
-        "ProductName": "Mishi Kobe Niku",
+        "ProductName": "Jhangikhel",
         "CategoryID": 6,
         "QuantityPerUnit": "18 - 500 g pkgs.",
         "UnitPrice": 97.0,
@@ -51,7 +51,7 @@
     },
     {
         "ProductID": 17,
-        "ProductName": "Alice Mutton",
+        "ProductName": "Pravesh Sidana",
         "CategoryID": 6,
         "QuantityPerUnit": "20 - 1 kg tins",
         "UnitPrice": 39.0,
